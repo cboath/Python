@@ -1,5 +1,5 @@
 import time
-from bt_proximity import BluetoothRSSI
+from bt_proximity import BluetoothRSSI #View readme for the prerequisites to run this.
 
 phone = '' #Bluetooth MAC address of phone
 
