@@ -15,4 +15,4 @@ def get_signal_stength(mac):
     newavg = avg / dur
 
 get_signal_stength(phone)
-print('Average is ', newavg
+print('Average is ', newavg)
