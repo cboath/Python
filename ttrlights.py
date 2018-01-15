@@ -8,11 +8,12 @@
 import atexit
 import time
 import RPi.GPIO as GPIO
+import random
 
 from rpi_ws281x import __version__, PixelStrip, Color
 
 # LED strip configuration:
-LED_COUNT      = 144      # Number of LED pixels.
+LED_COUNT      = 288      # Number of LED pixels.
 LED_PIN        = 18      # GPIO pin connected to the pixels (must support PWM!).
 LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA        = 10      # DMA channel to use for generating signal
@@ -61,11 +62,20 @@ def runString(pixelColor, direction):
    # set the pixel  
    (r, g, b) = pixelColor
    ws2812.setPixelColorRGB(n, r, g, b)
-   ws2812.show()
+ws2812.show()
    # small delay
-   time.sleep(0.002)
+   #time.sleep(0.002)
 
 try:
+    while True:
+     for n in range(0, LED_COUNT):
+       # set the pixel  
+       #(r, g, b) = pixelColor
+       ws2812.setPixelColorRGB(n, random.randint(0,255), random.randint(0,255), random.randint(0,255))
+     ws2812.show()
+       # small delay
+       #time.sleep(0.002)
+        
     while True:
      c = 0  # color pointer
      rLoop = 0
@@ -80,7 +90,8 @@ try:
        # swap direction
        for direction in range(2):
          #print(lap, direction)
-         runString(pixelColor[c % 3], direction)
+         #runString(pixelColor[c % 3], direction)
+         runString(pixelColor[random.randint(0, 2)], direction)
          c += 1
          
 except KeyboardInterrupt:
