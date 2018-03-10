@@ -12,3 +12,8 @@ BLUEPY INSTALL: pip install bluepy
 PYBLUEZ INSTALL: Apt-get install libbluetooth-dev Apt-get install libboost-all-dev Apt-get install libcr-dev pip install pybluez pip install pybluez[ble]
 
 git clone https://github.com/ewenchou/bluetooth-proximity.git cd bluetooth-proximity sudo python setup.py install
+
+
+
+Stock suff needs API key update
+Also needs pip install of alpha_vantage and pandas
