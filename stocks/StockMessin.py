@@ -18,7 +18,7 @@ import subprocess
 with open('list.txt', 'r') as stocks:
     for x in stocks:
         currentSym = x.rstrip()
-        print('The stock is', currentSym)
+        print('The stock is {0}'.format(currentSym))
         data, meta_data = ts.get_intraday(symbol=currentSym, interval='1min', outputsize='compact')
 
         singleVal = data['4. close'].tail(1).to_string()
