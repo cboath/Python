@@ -1,8 +1,8 @@
 import picamera
+from picamera import Color
 from time import sleep
 import RPi.GPIO as GPIO
 import pygame
-from pygame.locals import *
 
 ##GPIO.setmode(GPIO.BCM)
 ##GPIO.setwarnings(False)
@@ -24,22 +24,30 @@ transparent = 0,0,0,0
 
 with picamera.PiCamera() as camera:
       camera.rotation = 180
+      camera.resolution = (windowSize)
       camera.start_preview()
+      camera.annotate_text_size = 70
+      camera.annotate_background = Color('white')
+      camera.annotate_foreground = Color('green')
+      camera.annotate_text = 'Daugherty SA&E Summit 2019'
       screen.fill(black)
       camera.preview.alpha = 128
       #GPIO.wait_for_edge(17, GPIO.FALLING)
       shot = 0
       while shot < 2:
             #GPIO.output(GREEN_LED,True)
-            for x in range (4, 0 , -1):
+            for x in range (3, 0 , -1):
                  label = myfont.render(str(x),1,white)
                  screen.blit(label, labelPOS)
                  sleep(1)
                  pygame.display.flip()
                  screen.fill(transparent)
             #GPIO.output(GREEN_LED,False)
+            sleep(1)
+            pygame.display.flip()
             camera.capture('img{counter:02d}.jpg')
             shot += 1
+            screen.fill(transparent)
       camera.stop_preview()
       pygame.display.quit()
       pygame.quit()
