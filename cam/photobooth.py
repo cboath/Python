@@ -15,18 +15,17 @@ black = 0,0,0
 white = 255,255,255
 infoObject = pygame.display.Info()
 newWidth = infoObject.current_w
-newHeight = infoObject.current_h
+newHeight = infoObject.current_h - 100
 windowSize = width, height = newWidth, newHeight
 screen = pygame.display.set_mode(windowSize)
 myfont = pygame.font.Font(None, 600)
 labelPOS = (newWidth / 2, newHeight / 3)
-transparent = 0,0,0,0
 
 with picamera.PiCamera() as camera:
       camera.rotation = 180
-      camera.resolution = (windowSize)
-      camera.start_preview()
-      camera.annotate_text_size = 70
+      camera.resolution = (1280, 768)
+      camera.start_preview(fullscreen=False, window = (150, 110, 1680, 1050))
+      camera.annotate_text_size = 45
       camera.annotate_background = Color('white')
       camera.annotate_foreground = Color('green')
       camera.annotate_text = 'Daugherty SA&E Summit 2019'
@@ -41,13 +40,14 @@ with picamera.PiCamera() as camera:
                  screen.blit(label, labelPOS)
                  sleep(1)
                  pygame.display.flip()
-                 screen.fill(transparent)
+                 screen.fill(black)
             #GPIO.output(GREEN_LED,False)
             sleep(1)
             pygame.display.flip()
             camera.capture('img{counter:02d}.jpg')
             shot += 1
-            screen.fill(transparent)
+            screen.fill(black)
       camera.stop_preview()
       pygame.display.quit()
       pygame.quit()
+
