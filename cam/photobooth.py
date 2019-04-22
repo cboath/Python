@@ -4,13 +4,12 @@ from time import sleep
 import RPi.GPIO as GPIO
 import pygame
 
-import tweettesting
+import phototweet
+import photoMerge as merge
 
-##GPIO.setmode(GPIO.BCM)
-##GPIO.setwarnings(False)
-##GPIO.setup(17,GPIO.IN,GPIO.PUD_UP)
-##GREEN_LED = 22
-##GPIO.setup(GREEN_LED, GPIO.OUT)
+from gpiozero import Button
+button = Button(2)
+
 
 pygame.init()
 black = 0,0,0
@@ -24,6 +23,7 @@ myfont = pygame.font.Font(None, 600)
 labelPOS = (newWidth / 2, newHeight / 3)
 
 message = 'Tweeting another photo!'
+finalPhotoName = 'imgmerge.jpg'
 
 with picamera.PiCamera() as camera:
       camera.rotation = 180
@@ -36,23 +36,26 @@ with picamera.PiCamera() as camera:
       screen.fill(black)
       camera.preview.alpha = 228
       #GPIO.wait_for_edge(17, GPIO.FALLING)
-      shot = 0
-      while shot < 2:
-            #GPIO.output(GREEN_LED,True)
-            for x in range (3, 0 , -1):
-                 label = myfont.render(str(x),1,white)
-                 screen.blit(label, labelPOS)
-                 sleep(1)
-                 pygame.display.flip()
-                 screen.fill(black)
-            #GPIO.output(GREEN_LED,False)
-            sleep(1)
-            pygame.display.flip()
-            photoName = 'img(%d).jpg' % shot
-            camera.capture(photoName)
-            shot += 1
-            tweettesting.postTweets(photoName, message)
-            screen.fill(black)
+      while(True):
+          button.wait_for_press()
+          shot = 0
+          while shot < 2:
+                #GPIO.output(GREEN_LED,True)
+                for x in range (3, 0 , -1):
+                     label = myfont.render(str(x),1,white)
+                     screen.blit(label, labelPOS)
+                     sleep(1)
+                     pygame.display.flip()
+                     screen.fill(black)
+                #GPIO.output(GREEN_LED,False)
+                sleep(1)
+                pygame.display.flip()
+                photoName = 'img(%d).jpg' % shot
+                camera.capture(photoName)
+                shot += 1
+                screen.fill(black)
+          merge.smash()
+          phototweet.postTweets(finalPhotoName, message)
       camera.stop_preview()
       pygame.display.quit()
       pygame.quit()
