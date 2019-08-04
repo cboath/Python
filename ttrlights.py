@@ -5,6 +5,9 @@
 # designed by David Guidos, August 2017
 #
 # control pin for string is GPIO 18
+
+# https://www.instructables.com/id/Inky-PHAT-Weather-Station/
+
 import atexit
 import time
 import RPi.GPIO as GPIO
