@@ -17,3 +17,6 @@ while True:
 
 #player code
 # omxplayer timelapse.mp4 -o hdmi
+
+#Stitch application
+# sudo apt-get install libav-tools
