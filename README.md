@@ -17,3 +17,6 @@ git clone https://github.com/ewenchou/bluetooth-proximity.git cd bluetooth-proxi
 
 Stock suff needs API key update
 Also needs pip install of alpha_vantage and pandas
+
+
+Add water sensor and thermometer when can log back in.
