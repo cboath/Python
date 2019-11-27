@@ -1,5 +1,8 @@
 #The ds18b20 sensor setup
 # Wiring diagram https://thepihut.com/blogs/raspberry-pi-tutorials/ds18b20-one-wire-digital-temperature-sensor-and-the-raspberry-pi
+# RPI Pin 1 to Red lead on thremometer
+# RPI Pin 1 also to 4.7 resistor.  Resistor between Data lead (RPI Pin 7) and Yellow lead on thermometer
+# RPI Pin 6 to Black lead on thrmometer
 
 import os
 import time
