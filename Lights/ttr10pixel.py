@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+#required to run  sudo pip3 install rpi_wsx281x
+
+#wiring setup
+#5v - pin 2 - red wire on lights
+#ground - pin 6 - white wire on lights
+#data - pin 12 - green wire on lights (middle)
+
 # stringRunner
 # runs pixels through an LED string
 # designed by David Guidos, August 2017
@@ -86,4 +93,3 @@ try:
 except KeyboardInterrupt:
     clear()
     ws2812.show()
-
