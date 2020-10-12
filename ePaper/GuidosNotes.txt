@@ -1,0 +1,12 @@
+To install the pimoroni libraries:
+sudo apt-get install pimoroni
+Then on the desktop go to Accessories | PiMoroni Dashboard
+and select to install the library for the device.
+
+To work with the WaveShare ePaper 2.13:
+Change the init statement in /usr/lib/python3/dist-packages/inkyphat/inky212x104.py to 
+use pins 25,17,24 for DC, RST, BUSY instead of 22,27,17.
+
+
+
+
