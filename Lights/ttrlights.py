@@ -1,13 +1,17 @@
 #!/usr/bin/env python
 
+#required to run  sudo pip3 install rpi_wsx281x
+
+#wiring setup
+#5v - pin 2 - red wire on lights
+#ground - pin 6 - white wire on lights
+#data - pin 12 - green wire on lights (middle)
+
 # stringRunner
 # runs pixels through an LED string
 # designed by David Guidos, August 2017
 #
 # control pin for string is GPIO 18
-
-# https://www.instructables.com/id/Inky-PHAT-Weather-Station/
-
 import atexit
 import time
 import RPi.GPIO as GPIO
@@ -93,8 +97,8 @@ try:
        # swap direction
        for direction in range(2):
          #print(lap, direction)
-         #runString(pixelColor[c % 3], direction)
-         runString(pixelColor[random.randint(0, 2)], direction)
+         runString(pixelColor[c % 3], direction)
+         #runString(pixelColor[random.randint(0, 2)], direction)
          c += 1
          
 except KeyboardInterrupt:
