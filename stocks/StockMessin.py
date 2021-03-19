@@ -3,8 +3,8 @@
 
 #for package in required_pkgs:
     #if package not in installed_pkgs:
-        #print('Installing', package)
-        #subprocess.check_call(["python", '-m', 'pip', 'install', package])
+#        print('Installing', package)
+#        subprocess.check_call(["python", '-m', 'pip', 'install', package])
         
         
 from alpha_vantage.timeseries import TimeSeries
