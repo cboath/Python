@@ -8,22 +8,25 @@
         
         
 from alpha_vantage.timeseries import TimeSeries
-ts = TimeSeries(key='D3F0HVMFLMPCVLRN', output_format='pandas')
+ts = TimeSeries(key='')
 
 import sys
-import pkg_resources
-import pip
-import subprocess
+# import pkg_resources
+# import pip
+# import subprocess
 
 with open('list.txt', 'r') as stocks:
     for x in stocks:
         currentSym = x.rstrip()
-        print('The stock is {0}'.format(currentSym))
+        # print('The stock is ', x)
         data, meta_data = ts.get_intraday(symbol=currentSym, interval='1min', outputsize='compact')
+        currstock = ''
+        for boobs, teeth in data.items():
+            counter = 0
+            for openy, high in teeth.items():
+                counter = counter + 1
+                if (counter == 4):
+                    currstock = high
+            break
 
-        singleVal = data['4. close'].tail(1).to_string()
-
-        a, b, c = singleVal.partition('    ')
-        g = float(c)
-
-        print(g)
+        print('\nThe value of', x, 'is', currstock)
