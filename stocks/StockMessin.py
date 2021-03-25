@@ -11,9 +11,6 @@ from alpha_vantage.timeseries import TimeSeries
 ts = TimeSeries(key='')
 
 import sys
-# import pkg_resources
-# import pip
-# import subprocess
 
 with open('list.txt', 'r') as stocks:
     for x in stocks:
@@ -21,9 +18,9 @@ with open('list.txt', 'r') as stocks:
         # print('The stock is ', x)
         data, meta_data = ts.get_intraday(symbol=currentSym, interval='1min', outputsize='compact')
         currstock = ''
-        for boobs, teeth in data.items():
+        for datestr, stockdata in data.items():
             counter = 0
-            for openy, high in teeth.items():
+            for openy, high in stockdata.items():
                 counter = counter + 1
                 if (counter == 4):
                     currstock = high
