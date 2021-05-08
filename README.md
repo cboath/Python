@@ -20,3 +20,8 @@ Also needs pip install of alpha_vantage and pandas
 
 
 Add water sensor and thermometer when can log back in.
+
+
+HOCKEY:
+
+sudo python3 src/main.py --led-gpio-mapping=adafruit-hat --led-brightness=60 --led-slowdown-gpio=2
